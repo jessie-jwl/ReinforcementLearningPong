@@ -10,7 +10,7 @@ import torch.optim as optim
 import torch.autograd as autograd 
 import torch.nn.functional as F
 USE_CUDA = torch.cuda.is_available()
-from dqn import QLearner, compute_td_loss, ReplayBuffer
+from dqn_edit import QLearner, compute_td_loss, ReplayBuffer
 
 env_id = "PongNoFrameskip-v4"
 env = make_atari(env_id)
