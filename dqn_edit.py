@@ -75,7 +75,7 @@ def compute_td_loss(model, batch_size, gamma, replay_buffer):
     cur_q_value = model(state).gather(1, action.long().unsqueeze(-1)).squeeze(-1)
     next_q_value = model(next_state).max(dim=1)[0]
     next_q_value = next_q_value.detach()
-    expected_q_value = reward + next_q_value * gamma
+    expected_q_value = reward + next_q_value * gamma * (-1 * (done - 1))
 
     loss = nn.MSELoss()(cur_q_value, expected_q_value)
     ######## YOUR CODE HERE! ########

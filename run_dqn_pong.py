@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 import torch
 import torch.nn as nn
 import torch.optim as optim
-import torch.autograd as autograd 
+import torch.autograd as autograd
 import torch.nn.functional as F
 from dqn_edit import QLearner, compute_td_loss, ReplayBuffer
 
@@ -41,7 +41,6 @@ if __name__ == '__main__':
     episode_reward = 0
 
     state = env.reset()
-
 
     for frame_idx in range(1, num_frames + 1):
 
