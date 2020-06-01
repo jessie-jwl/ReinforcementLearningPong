@@ -1,6 +1,6 @@
 
 def main():
-    fileName = "Trial1"
+    fileName = "2M_PCA"
     with open("Output/" + fileName, "r", encoding="utf-8") as inputFile:
         data = inputFile.read().split("\n")
 
