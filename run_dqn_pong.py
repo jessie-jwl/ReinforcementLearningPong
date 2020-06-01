@@ -49,7 +49,7 @@ if __name__ == '__main__':
         epsilon = epsilon_by_frame(frame_idx)
 
         action = model.act(state, epsilon)
-        if frame_idx >= (num_frames - 10000):
+        if frame_idx > (num_frames - 10000):
             last_tenK_frames.append([state, action])
 
         next_state, reward, done, _ = env.step(action)
