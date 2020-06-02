@@ -38,9 +38,9 @@ class QLearner(nn.Module):
 
     def forward(self, x):
         x = self.features(x)
-        x = x.view(x.size(0), -1)
-        x = self.fc(x)
-        return x
+        feature = x.view(x.size(0), -1)
+        x = self.fc(feature)
+        return x, feature
 
     def feature_size(self):
         return self.features(autograd.Variable(torch.zeros(1, *self.input_shape))).view(1, -1).size(1)
@@ -53,14 +53,16 @@ class QLearner(nn.Module):
             # Complete the R.H.S. of the following 2 lines and uncomment them
             # q_value =
             # action =
-            q_value = self.forward(state)
+            q_value, feature = self.forward(state)
             _, potential_action = torch.max(q_value, dim=1)
             action = int(potential_action.item())
             ######## YOUR CODE HERE! ########
         else:
+            feature = None
             action = random.randrange(self.env.action_space.n)
-        return action
-        
+        return action, feature
+
+
 def compute_td_loss(model, batch_size, gamma, replay_buffer):
     state, action, reward, next_state, done = replay_buffer.sample(batch_size)
 
