@@ -139,7 +139,7 @@ def pca(features):
     for i in range(20, 100):
         frame, _, _ = features[i]
         plt.imshow(frame[0])
-        plt.savefig("Output/play2/Frame_" + str(i))
+        plt.savefig("Output/play/Frame_" + str(i))
 
     # Below PCA stuff.
     last_df = pd.DataFrame(features, columns=['Frame', 'Feature', 'Action'])
